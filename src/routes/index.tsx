@@ -1,24 +1,24 @@
 import { createFileRoute } from "@tanstack/react-router";
+import KodiaSite from "@/components/KodiaSite";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title: "Kodia Al-Mustaqbal | Diversified Iraqi Company" },
+      {
+        name: "description",
+        content:
+          "Kodia Al-Mustaqbal is a Baghdad-based diversified Iraqi company in contracting, real estate, pharmaceutical trade, general trading and investment.",
+      },
+      { property: "og:title", content: "Kodia Al-Mustaqbal | Diversified Iraqi Company" },
+      {
+        property: "og:description",
+        content:
+          "Contracting, real estate, pharmaceutical trade, general trading and strategic business activities across Iraq.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
+  component: KodiaSite,
 });
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
