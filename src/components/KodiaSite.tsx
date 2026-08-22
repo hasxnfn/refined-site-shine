@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from '@tanstack/react-router';
 import {
   ArrowDown, ArrowRight, BarChart3, BriefcaseBusiness, Building2,
   ChevronRight, Globe2, Handshake, HeartPulse, Instagram, Linkedin,
@@ -75,6 +76,16 @@ function KodiaSite() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (!hash) return;
+    const target = document.querySelector(hash);
+    if (!target) return;
+    window.requestAnimationFrame(() => {
+      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 72, behavior: 'smooth' });
+    });
+  }, []);
+
   const toggleLanguage = () => setLanguage((current) => current === 'en' ? 'ar' : 'en');
 
   const handleAnchorClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
@@ -102,7 +113,7 @@ function KodiaSite() {
   return <div className={isArabic ? 'app rtl' : 'app'} dir={isArabic ? 'rtl' : 'ltr'}>
     <header className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
       <a className="logo-link" href="#home" onClick={handleAnchorClick}><Brand /></a>
-      <nav className={menuOpen ? 'nav-open' : ''}>{t.nav.map((item, index) => <a key={item} href={['#home', '#about', '#services', '#contact'][index]} onClick={handleAnchorClick}>{item}</a>)}</nav>
+      <nav className={menuOpen ? 'nav-open' : ''}>{t.nav.map((item, index) => index === 1 ? <Link key={item} to="/about" onClick={() => setMenuOpen(false)}>{item}</Link> : <a key={item} href={['#home', '#about', '#services', '#contact'][index]} onClick={handleAnchorClick}>{item}</a>)}</nav>
       <div className="nav-actions"><button className="icon-button" aria-label="Search"><Search size={18} /></button><span className="nav-divider" /><button className="lang-toggle" onClick={toggleLanguage}>{isArabic ? 'EN' : 'العربية'}</button><a className="nav-cta" href="#contact" onClick={handleAnchorClick}>{t.contact} <ArrowRight size={14} /></a></div>
       <button className="menu-button" aria-label="Toggle menu" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</button>
     </header>
@@ -116,7 +127,7 @@ function KodiaSite() {
 
       <section className="expertise section-pad" id="services"><div className="section-top"><div><p className="eyebrow">{t.expertiseLabel}</p><h2>{t.expertise}</h2></div><a className="text-link" href="#services">{t.allServices} <ChevronRight size={15} /></a></div><div className="expertise-grid">{expertise.map((item, index) => { const Icon = item.icon; const copy = item[language]; return <article className="business-card" key={copy[0]}><img className="card-photo" src={item.image} alt={copy[0]} /><div className="card-shade" /><div className="card-body"><div className="card-icon"><Icon size={16} /></div><div className="card-number">0{index + 1}</div><h3>{copy[0]}</h3><p>{copy[1]}</p></div></article> })}</div></section>
 
-      <section className="about section-pad" id="about"><div className="about-image"><img src={images.future} alt="Baghdad architecture" /></div><div className="about-copy"><p className="eyebrow">{isArabic ? 'من نحن' : 'Who We Are'}</p><h2>{t.aboutTitle}</h2><p>{t.aboutText}</p><a className="button button-gold" href="#contact" onClick={handleAnchorClick}>{t.discover} <ArrowRight size={16} /></a></div></section>
+      <section className="about section-pad" id="about"><div className="about-image"><img src={images.future} alt="Baghdad architecture" /></div><div className="about-copy"><p className="eyebrow">{isArabic ? 'من نحن' : 'Who We Are'}</p><h2>{t.aboutTitle}</h2><p>{t.aboutText}</p><Link className="button button-gold" to="/about">{t.discover} <ArrowRight size={16} /></Link></div></section>
 
       <section className="why section-pad"><p className="eyebrow">{isArabic ? 'رؤيتنا' : 'Our Difference'}</p><h2>{t.why}</h2><div className="why-grid">{whyItems.map((item) => { const Icon = item.icon; const copy = item[language]; return <article className="why-item" key={copy[0]}><Icon className="gold-icon" size={27} /><h3>{copy[0]}</h3><p>{copy[1]}</p></article> })}</div></section>
 
@@ -127,7 +138,7 @@ function KodiaSite() {
       <section className="cta section-pad" id="contact"><div><p className="eyebrow">{isArabic ? 'تواصل معنا' : 'Start a Conversation'}</p><h2>{t.cta}</h2><p>{t.ctaText}</p></div><a className="button button-gold" href="mailto:Kodialmustakbel@gmail.com">{t.contact} <ArrowRight size={16} /></a></section>
     </main>
 
-    <footer className="footer"><div className="footer-main"><div className="footer-brand"><Brand compact /><p>{t.footerText}</p></div><div className="footer-column"><h4>{t.quick}</h4>{t.nav.map((item, index) => <a key={item} href={['#home', '#about', '#services', '#contact'][index]} onClick={handleAnchorClick}>{item}</a>)}</div><div className="footer-column business-links"><h4>{t.business}</h4><a href="#services" onClick={handleAnchorClick}>{expertise[0]![language][0]}</a><a href="#services" onClick={handleAnchorClick}>{expertise[1]![language][0]}</a><a href="#services" onClick={handleAnchorClick}>{expertise[2]![language][0]}</a><a href="#services" onClick={handleAnchorClick}>{expertise[3]![language][0]}</a></div><div className="footer-column contact-column"><h4>{isArabic ? 'معلومات الاتصال' : 'Contact Info'}</h4><a href="#contact" onClick={handleAnchorClick}><Globe2 size={14} />{t.location}</a><a href="tel:+9647732777001"><Phone size={14} /><bdi dir="ltr">+964 7732777001</bdi></a><a href="mailto:Kodialmustakbel@gmail.com"><Mail size={14} />Kodialmustakbel@gmail.com</a></div><div className="footer-column social-column"><h4>{t.follow}</h4><div className="socials"><a href="#contact" aria-label="LinkedIn"><Linkedin size={15} /></a><a href="#contact" aria-label="Youtube"><Youtube size={15} /></a><a href="#contact" aria-label="Instagram"><Instagram size={15} /></a></div><button className="footer-lang" onClick={toggleLanguage}>{isArabic ? 'العربية' : 'EN'} <span>|</span> {isArabic ? 'EN' : 'العربية'}</button></div></div><div className="footer-bottom"><span>{t.rights}</span><span>{isArabic ? 'بغداد، العراق' : 'Baghdad, Iraq'}</span></div></footer>
+    <footer className="footer"><div className="footer-main"><div className="footer-brand"><Brand compact /><p>{t.footerText}</p></div><div className="footer-column"><h4>{t.quick}</h4>{t.nav.map((item, index) => index === 1 ? <Link key={item} to="/about">{item}</Link> : <a key={item} href={['#home', '#about', '#services', '#contact'][index]} onClick={handleAnchorClick}>{item}</a>)}</div><div className="footer-column business-links"><h4>{t.business}</h4><a href="#services" onClick={handleAnchorClick}>{expertise[0]![language][0]}</a><a href="#services" onClick={handleAnchorClick}>{expertise[1]![language][0]}</a><a href="#services" onClick={handleAnchorClick}>{expertise[2]![language][0]}</a><a href="#services" onClick={handleAnchorClick}>{expertise[3]![language][0]}</a></div><div className="footer-column contact-column"><h4>{isArabic ? 'معلومات الاتصال' : 'Contact Info'}</h4><a href="#contact" onClick={handleAnchorClick}><Globe2 size={14} />{t.location}</a><a href="tel:+9647732777001"><Phone size={14} /><bdi dir="ltr">+964 7732777001</bdi></a><a href="mailto:Kodialmustakbel@gmail.com"><Mail size={14} />Kodialmustakbel@gmail.com</a></div><div className="footer-column social-column"><h4>{t.follow}</h4><div className="socials"><a href="#contact" aria-label="LinkedIn"><Linkedin size={15} /></a><a href="#contact" aria-label="Youtube"><Youtube size={15} /></a><a href="#contact" aria-label="Instagram"><Instagram size={15} /></a></div><button className="footer-lang" onClick={toggleLanguage}>{isArabic ? 'العربية' : 'EN'} <span>|</span> {isArabic ? 'EN' : 'العربية'}</button></div></div><div className="footer-bottom"><span>{t.rights}</span><span>{isArabic ? 'بغداد، العراق' : 'Baghdad, Iraq'}</span></div></footer>
   </div>;
 }
 
