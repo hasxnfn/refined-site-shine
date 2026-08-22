@@ -72,7 +72,7 @@ function AboutPage() {
   }, []);
 
   const navLinks = navItems.map(({ label, to, hash }) => (
-    <Link key={label} to={to} hash={hash} onClick={() => setMenuOpen(false)}>{label}</Link>
+    <Link key={label} to={to} {...(hash ? { hash } : {})} onClick={() => setMenuOpen(false)}>{label}</Link>
   ));
 
   return (
