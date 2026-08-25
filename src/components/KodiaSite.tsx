@@ -1,11 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from '@tanstack/react-router';
 import heroDefense from '@/assets/hero-defense.jpg';
-import {
-  ArrowDown, ArrowRight, BarChart3, BriefcaseBusiness, Building2,
-  ChevronRight, Globe2, Handshake, HeartPulse, Instagram, Linkedin,
-  Mail, Menu, Phone, Search, ShieldCheck, Sparkles, Truck, X, Youtube,
-} from 'lucide-react';
+import { ArrowDown, ArrowRight, ChartBar as BarChart3, BriefcaseBusiness, Building2, ChevronRight, Globe as Globe2, Handshake, HeartPulse, Instagram, Linkedin, Mail, Menu, Phone, Search, ShieldCheck, Sparkles, Truck, X, Youtube } from 'lucide-react';
 
 type Language = 'en' | 'ar';
 
@@ -120,7 +116,7 @@ function KodiaSite() {
     </header>
 
     <main>
-      <section className="hero" id="home" style={{ backgroundImage: `linear-gradient(90deg, rgba(2, 24, 51, .98) 5%, rgba(2, 24, 51, .84) 35%, rgba(2, 24, 51, .28) 80%), url(${images.hero})` }}>
+      <section className="hero" id="home" style={{ backgroundImage: `linear-gradient(90deg, rgba(2, 24, 51, 1) 0%, rgba(2, 24, 51, .97) 10%, rgba(2, 24, 51, .84) 38%, rgba(2, 24, 51, .28) 82%), url(${images.hero})` }}>
         <div className="hero-content"><p className="eyebrow">{t.heroEyebrow}</p><h1>{t.heroTitleA}<br /><em>{t.heroTitleB}</em></h1><p className="hero-copy">{t.heroText}</p><div className="button-row"><a className="button button-gold" href="#services" onClick={handleAnchorClick}>{t.services} <ArrowRight size={16} /></a><a className="button button-outline" href="#contact" onClick={handleAnchorClick}>{t.contact}</a></div></div>
         <div className="hero-brand"><div className="hero-symbol">K<i /></div><div className="hero-arabic">كوديا المستقبل</div><div className="hero-english">KODIA AL-MUSTAQBAL</div></div>
         <div className="scroll-cue"><span>01</span><i /><span>{isArabic ? 'مرر للأسفل' : 'SCROLL DOWN'}</span><ArrowDown size={14} /></div><div className="hero-curve" />
@@ -134,7 +130,7 @@ function KodiaSite() {
 
       <section className="values section-pad"><h2>{t.values}</h2><div className="values-list">{values.map((item) => { const Icon = item.icon; return <div className="value" key={item.en}><Icon size={21} /><span>{item[language]}</span></div> })}</div></section>
 
-      <section className="future-banner" style={{ backgroundImage: `linear-gradient(90deg, rgba(3, 25, 53, .95), rgba(3, 25, 53, .42)), url(${images.hero})` }}><h2>{t.future}</h2><div className="banner-line" /></section>
+      <section className="future-banner" style={{ backgroundImage: `linear-gradient(90deg, rgba(3, 25, 53, 1), rgba(3, 25, 53, .42)), url(${images.hero})` }}><h2>{t.future}</h2><div className="banner-line" /></section>
 
       <section className="cta section-pad" id="contact"><div><p className="eyebrow">{isArabic ? 'تواصل معنا' : 'Start a Conversation'}</p><h2>{t.cta}</h2><p>{t.ctaText}</p></div><a className="button button-gold" href="mailto:Kodialmustakbel@gmail.com">{t.contact} <ArrowRight size={16} /></a></section>
     </main>
