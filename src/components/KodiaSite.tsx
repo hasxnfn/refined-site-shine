@@ -1,18 +1,20 @@
 import { useEffect, useState } from 'react';
 import { Link } from '@tanstack/react-router';
 import heroDefense from '@/assets/hero-defense.jpg';
+import defenseImage from '@/assets/about-defense.jpg';
 import { ArrowDown, ArrowRight, ChartBar as BarChart3, BriefcaseBusiness, Building2, ChevronRight, Globe as Globe2, Handshake, HeartPulse, Instagram, Linkedin, Mail, Menu, Phone, Search, ShieldCheck, Sparkles, Truck, X, Youtube } from 'lucide-react';
 
 type Language = 'en' | 'ar';
 
 const images = {
   hero: heroDefense,
-  construction: 'https://images.pexels.com/photos/17291326/pexels-photo-17291326.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-  realEstate: 'https://images.pexels.com/photos/16494354/pexels-photo-16494354.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-  medical: 'https://images.pexels.com/photos/13060613/pexels-photo-13060613.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-  trading: 'https://images.pexels.com/photos/27732803/pexels-photo-27732803.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-  investment: 'https://images.pexels.com/photos/26974755/pexels-photo-26974755.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-  future: 'https://images.pexels.com/photos/31780931/pexels-photo-31780931.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+  defense: defenseImage,
+  construction: 'https://images.pexels.com/photos/17291326/pexels-photo-17291326.jpeg?auto=compress&cs=tinysrgb&h=1200&w=1600',
+  realEstate: 'https://images.pexels.com/photos/16494354/pexels-photo-16494354.jpeg?auto=compress&cs=tinysrgb&h=1200&w=1600',
+  medical: 'https://images.pexels.com/photos/13060613/pexels-photo-13060613.jpeg?auto=compress&cs=tinysrgb&h=1200&w=1600',
+  trading: 'https://images.pexels.com/photos/27732803/pexels-photo-27732803.jpeg?auto=compress&cs=tinysrgb&h=1200&w=1600',
+  investment: 'https://images.pexels.com/photos/26974755/pexels-photo-26974755.jpeg?auto=compress&cs=tinysrgb&h=1200&w=1600',
+  future: 'https://images.pexels.com/photos/31780931/pexels-photo-31780931.jpeg?auto=compress&cs=tinysrgb&h=1200&w=1600',
 };
 
 const translations = {
@@ -37,12 +39,12 @@ const translations = {
 };
 
 const expertise = [
+  { image: images.defense, icon: ShieldCheck, en: ['Military, Security & Defense Solutions', 'Building partnerships with qualified international manufacturers and technology providers in defense and security, through professional and officially compliant channels.'], ar: ['حلول عسكرية وأمنية ودفاعية', 'بناء شراكات مع مصنعين ومزودي تقنيات دوليين مؤهلين في مجالات الدفاع والأمن، عبر قنوات مهنية ورسمية متوافقة.'] },
   { image: images.construction, icon: Building2, en: ['General Contracting & Construction', 'Supporting development activities through professional execution and reliable delivery.'], ar: ['المقاولات العامة والإنشاءات', 'دعم مشاريع التطوير من خلال التنفيذ المهني والتسليم الموثوق.'] },
   { image: images.realEstate, icon: Building2, en: ['Real Estate', 'Engaging in real estate opportunities with a focus on development and long-term value.'], ar: ['العقارات', 'الاستثمار في الفرص العقارية مع التركيز على التطوير والقيمة طويلة الأمد.'] },
   { image: images.medical, icon: HeartPulse, en: ['Pharmaceutical & Medical Trade', 'Supporting pharmaceutical and medical-related commercial activities.'], ar: ['التجارة الدوائية والطبية', 'دعم الأنشطة التجارية المرتبطة بالمنتجات الدوائية والطبية.'] },
   { image: images.trading, icon: Globe2, en: ['General Trading & Supply', 'Commercial trading and supply connecting products and business needs.'], ar: ['التجارة العامة والتجهيز', 'التجارة والتجهيز التجاري لربط المنتجات باحتياجات الأعمال.'] },
   { image: images.investment, icon: BarChart3, en: ['Investment & Business Development', 'Exploring strategic opportunities and supporting sustainable growth.'], ar: ['الاستثمار وتطوير الأعمال', 'استكشاف الفرص الاستراتيجية ودعم النمو المستدام.'] },
-  { image: images.future, icon: BriefcaseBusiness, en: ['Commercial & Strategic Activities', 'Additional commercial activities aligned with our capabilities and vision.'], ar: ['الأنشطة التجارية والاستراتيجية', 'أنشطة تجارية إضافية تنسجم مع قدراتنا ورؤيتنا.'] },
 ];
 
 const whyItems = [
@@ -124,7 +126,7 @@ function KodiaSite() {
 
       <section className="expertise section-pad" id="services"><div className="section-top"><div><p className="eyebrow">{t.expertiseLabel}</p><h2>{t.expertise}</h2></div><a className="text-link" href="#services">{t.allServices} <ChevronRight size={15} /></a></div><div className="expertise-grid">{expertise.map((item, index) => { const Icon = item.icon; const copy = item[language]; return <article className="business-card" key={copy[0]}><img className="card-photo" src={item.image} alt={copy[0]} /><div className="card-shade" /><div className="card-body"><div className="card-icon"><Icon size={16} /></div><div className="card-number">0{index + 1}</div><h3>{copy[0]}</h3><p>{copy[1]}</p></div></article> })}</div></section>
 
-      <section className="about section-pad" id="about"><div className="about-image"><img src={images.future} alt="Baghdad architecture" /></div><div className="about-copy"><p className="eyebrow">{isArabic ? 'من نحن' : 'Who We Are'}</p><h2>{t.aboutTitle}</h2><p>{t.aboutText}</p><Link className="button button-gold" to="/about">{t.discover} <ArrowRight size={16} /></Link></div></section>
+      <section className="about section-pad" id="about"><div className="about-image"><img src={images.defense} alt="Defense and security systems" /></div><div className="about-copy"><p className="eyebrow">{isArabic ? 'من نحن' : 'Who We Are'}</p><h2>{t.aboutTitle}</h2><p>{t.aboutText}</p><Link className="button button-gold" to="/about">{t.discover} <ArrowRight size={16} /></Link></div></section>
 
       <section className="why section-pad"><p className="eyebrow">{isArabic ? 'رؤيتنا' : 'Our Difference'}</p><h2>{t.why}</h2><div className="why-grid">{whyItems.map((item) => { const Icon = item.icon; const copy = item[language]; return <article className="why-item" key={copy[0]}><Icon className="gold-icon" size={27} /><h3>{copy[0]}</h3><p>{copy[1]}</p></article> })}</div></section>
 
