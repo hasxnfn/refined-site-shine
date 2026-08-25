@@ -464,3 +464,5 @@ nav a { text-transform: uppercase; letter-spacing: .1em; font-size: 11.5px; }
 .sector-light .sector-copy h2 { color: #f2f6fb; }
 .sector-light .sector-copy p { color: rgba(231,237,245,.72); }
 .sector-light .sector-list li { color: rgba(231,237,245,.88); }
+.expertise-grid { align-items: stretch; }
+.expertise-grid .business-card { height: 100%; }
