@@ -466,3 +466,5 @@ nav a { text-transform: uppercase; letter-spacing: .1em; font-size: 11.5px; }
 .sector-light .sector-list li { color: rgba(231,237,245,.88); }
 .expertise-grid { align-items: stretch; }
 .expertise-grid .business-card { height: 100%; }
+.hero { background-position: right center; }
+@media (max-width: 760px) { .hero { background-position: 72% center !important; } }

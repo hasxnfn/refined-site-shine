@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from '@tanstack/react-router';
+import heroDefense from '@/assets/hero-defense.jpg';
 import {
   ArrowDown, ArrowRight, BarChart3, BriefcaseBusiness, Building2,
   ChevronRight, Globe2, Handshake, HeartPulse, Instagram, Linkedin,
@@ -9,7 +10,7 @@ import {
 type Language = 'en' | 'ar';
 
 const images = {
-  hero: 'https://images.pexels.com/photos/33047484/pexels-photo-33047484.png?auto=compress&cs=tinysrgb&h=650&w=940',
+  hero: heroDefense,
   construction: 'https://images.pexels.com/photos/17291326/pexels-photo-17291326.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
   realEstate: 'https://images.pexels.com/photos/16494354/pexels-photo-16494354.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
   medical: 'https://images.pexels.com/photos/13060613/pexels-photo-13060613.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
@@ -21,7 +22,7 @@ const images = {
 const translations = {
   en: {
     nav: ['Home', 'About', 'Services', 'Contact'],
-    heroEyebrow: 'KODIA AL-MUSTAQBAL', heroTitleA: 'Building Opportunities.', heroTitleB: 'Shaping the Future.',
+    heroEyebrow: 'KODIA AL-MUSTAQBAL', heroTitleA: 'Security & Defense Solutions.', heroTitleB: 'Investing Today, Securing Tomorrow.',
     heroText: 'A diversified Iraqi company delivering solutions across contracting, real estate, pharmaceutical trade, general commerce, and strategic business activities.',
     services: 'Explore Our Services', contact: 'Contact Us', expertiseLabel: 'Our Business', expertise: 'Areas of Expertise', allServices: 'View All Services',
     aboutTitle: 'Driven by Vision. Built on Trust.', aboutText: 'Kodia Al-Mustaqbal is a diversified Iraqi company based in Baghdad, operating across multiple commercial sectors with a commitment to professionalism, quality, reliability, and sustainable growth.', discover: 'Discover Our Company',
@@ -30,7 +31,7 @@ const translations = {
   },
   ar: {
     nav: ['الرئيسية', 'من نحن', 'خدماتنا', 'اتصل بنا'],
-    heroEyebrow: 'كوديا المستقبل', heroTitleA: 'نبني الفرص.', heroTitleB: 'نصنع المستقبل.',
+    heroEyebrow: 'كوديا المستقبل', heroTitleA: 'حلول الأمن والدفاع.', heroTitleB: 'نستثمر اليوم لنؤمّن الغد.',
     heroText: 'شركة عراقية متنوعة تقدم حلولاً في مجالات المقاولات والعقارات والتجارة الدوائية والتجارة العامة والأنشطة التجارية والاستراتيجية.',
     services: 'استكشف خدماتنا', contact: 'اتصل بنا', expertiseLabel: 'أعمالنا', expertise: 'مجالات الخبرة', allServices: 'عرض جميع الخدمات',
     aboutTitle: 'رؤية تقودنا. وثقة تبنينا.', aboutText: 'كوديا المستقبل شركة عراقية متنوعة مقرها بغداد، تعمل في قطاعات تجارية متعددة، ملتزمة بالمهنية والجودة والموثوقية والنمو المستدام.', discover: 'اكتشف شركتنا',
