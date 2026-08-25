@@ -210,7 +210,7 @@ h2 { font-size: clamp(29px, 3.1vw, 49px); letter-spacing: -0.025em; font-weight:
 .rtl h2 { letter-spacing: 0; line-height: 1.3; font-weight: 600; }
 .text-link { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; padding-bottom: 8px; letter-spacing: 0.02em; }
 .expertise { background: #f7f7f5; }
-.expertise-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+.expertise-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
 .business-card { position: relative; min-height: 400px; display: flex; align-items: flex-end; border-radius: 14px; overflow: hidden; background: #071d3d; box-shadow: 0 12px 28px rgba(4,28,59,.14); transition: transform .3s, box-shadow .3s; }
 .business-card:hover { transform: translateY(-8px); box-shadow: 0 22px 44px rgba(4,28,59,.24); }
 .card-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
